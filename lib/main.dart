@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
+import 'package:profile_app/widgets/CardProfile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,54 +73,6 @@ class Home extends StatelessWidget {
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CardProfile extends StatelessWidget {
-  const CardProfile({
-    Key? key,
-    required this.item,
-  }) : super(key: key);
-
-  final Map<String, String> item;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Color.fromARGB(255, 240, 205, 234),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset(
-            item['image']!,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 8),
-          Padding(
-            padding: EdgeInsets.only(left: 8, top: 2, right: 2, bottom: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  item['title']!,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: 4),
-                Text(
-                  item['description']!,
-                  style: TextStyle(fontSize: 14),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
