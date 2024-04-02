@@ -58,15 +58,19 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 231, 154, 218),
         title: const Text('Gallery'),
       ),
       body: SingleChildScrollView(
-        child: MasonryView(
-          listOfItem: _items,
-          numberOfColumn: 2,
-          itemBuilder: (item) {
-            return CardProfile(item: item);
-          },
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: MasonryView(
+            listOfItem: _items,
+            numberOfColumn: 2,
+            itemBuilder: (item) {
+              return CardProfile(item: item);
+            },
+          ),
         ),
       ),
     );
