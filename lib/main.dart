@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
 import 'package:profile_app/widgets/CardProfile.dart';
+import 'package:profile_app/widgets/DialogAddData.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,35 +24,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final List<Map<String, String>> _items = [
     {
-      'image': 'assets/images/foto1.jpg',
+      'image':
+          'https://plus.unsplash.com/premium_photo-1711508493858-6557307bbc5d?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'title': 'Title 1',
       'description': 'Description 1'
-    },
-    {
-      'image': 'assets/images/foto2.jpg',
-      'title': 'Title 2',
-      'description': 'Description 2'
-    },
-    {
-      'image': 'assets/images/foto3.jpg',
-      'title': 'Title 3',
-      'description': 'Description 3'
-    },
-    {
-      'image': 'assets/images/foto4.jpg',
-      'title': 'Title 5',
-      'description':
-          'Description 5 Description 5Description 5Description 5Description 5'
-    },
-    {
-      'image': 'assets/images/foto5.jpg',
-      'title': 'Title 4',
-      'description': 'Description 4'
     },
   ];
 
@@ -73,6 +59,23 @@ class Home extends StatelessWidget {
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return DialogAddData();
+            },
+          ).then((value) {
+            if (value != null) {
+              setState(() {
+                _items.add(value);
+              });
+            }
+          });
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
